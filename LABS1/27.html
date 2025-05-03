@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+</head>
+<body>
+<h2>Student JSON Output:</h2>
+<pre id="output"></pre>
+
+<script>
+    let input = prompt("Enter students in format:\nname index grade1 grade2 ... gradeN;name index grade1 ... ;...");
+    const studentStrings = input.split(";");
+
+    const students = [];
+
+    for (let s of studentStrings) {
+        const parts = s.trim().split(" ");
+        if (parts.length < 3) continue;
+
+        const name = parts[0];
+        const index = parts[1];
+        const grades = parts.slice(2).map(Number);
+        const avg = grades.reduce((sum, g) => sum + g, 0) / grades.length;
+
+        students.push({
+            name: name,
+            index: index,
+            average: Number(avg.toFixed(2))
+        });
+    }
+
+    students.sort((a, b) => a.name.localeCompare(b.name));
+
+    document.getElementById("output").textContent = JSON.stringify(students, null, 4);
+</script>
+</body>
+</html>

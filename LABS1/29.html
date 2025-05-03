@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <title>Корисници по email провајдер</title>
+</head>
+<body>
+<script>
+    let input = prompt("Внеси корисници во формат: име,презиме,мејл,телефон;...");
+    let provider = prompt("Внеси email провајдер (пример: gmail, yahoo, hotmail):").toLowerCase();
+    
+    let users = input.split(";").map(entry => {
+        let [firstName, lastName, email, phone] = entry.trim().split(",");
+        return { firstName, lastName, email, phone };
+    });
+
+    function getMobileProvider(phone) {
+        if (phone.startsWith("070") || phone.startsWith("071") || phone.startsWith("072")) return "Telekom";
+        if (phone.startsWith("073") || phone.startsWith("074")) return "Lyca Mobile";
+        if (phone.startsWith("075") || phone.startsWith("076") || phone.startsWith("077") || phone.startsWith("078")) return "A1";
+        if (phone.startsWith("079")) return "MTEL";
+        return "Непознат";
+    }
+    
+    let filteredUsers = users
+        .filter(user => user.email.toLowerCase().includes("@" + provider))
+        .map(user => ({
+            ...user,
+            mobileProvider: getMobileProvider(user.phone)
+        }));
+    
+    document.body.innerHTML = `<pre>${JSON.stringify(filteredUsers, null, 2)}</pre>`;
+</script>
+</body>
+</html>

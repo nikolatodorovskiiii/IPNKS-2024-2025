@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <title>Броеви</title>
+</head>
+<body>
+
+<h3>Резултати:</h3>
+<pre id="output"></pre>
+
+<script>
+    let input = prompt("Внеси броеви одделени со запирка (пример: 3,8,1,4):");
+
+    let numbers = input.split(",").map(num => parseInt(num.trim()));
+
+    let result = numbers.map(n => {
+        return {
+            number: n,
+            square: n * n,
+            even: n % 2 === 0
+        };
+    });
+
+    result.sort((a, b) => a.number - b.number);
+
+    document.getElementById("output").textContent = JSON.stringify(result, null, 4);
+</script>
+
+</body>
+</html>
+
+

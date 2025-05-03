@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Split String by Characters</title>
+</head>
+<body>
+
+<script>
+    const filter = "reshavame ipks laboratoriski vezhbi";
+    const value = "a;e";
+
+    const [firstFilter, secondFilter] = filter.split(";");
+
+    const result = [];
+    let current = "";
+
+    for (let i = 0; i < value.length; i++) {
+        if (value[i] === firstFilter || value[i] === secondFilter) {
+            if (current) {
+                result.push(current);
+                current = "";
+            }
+        } else {
+            current += value[i];
+        }
+    }
+
+    if (current) {
+        result.push(current);
+    }
+    
+    result.forEach(part => console.log(part));
+</script>
+
+</body>
+</html>

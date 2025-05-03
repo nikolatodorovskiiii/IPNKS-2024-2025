@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Input Filter</title>
+</head>
+<body>
+
+<script>
+    let users = [];
+    let input = prompt("Enter name, surname, email, phone or '*' to stop");
+
+    while (input !== "*") {
+        let [name, surname, email, phone] = input.split(" ");
+
+        if (name && surname && email && phone) {
+            users.push({
+                name: name,
+                surname: surname,
+                email: email,
+                phone: phone
+            });
+        }
+
+        input = prompt("Enter name, surname, email, phone or '*' to stop");
+    }
+
+    let filtered = users
+        .filter(u => u.phone.startsWith("073"))
+        .sort((a, b) => a.name.localeCompare(b.name));
+
+    console.log(JSON.stringify(filtered, null, 2));
+</script>
+
+</body>
+</html>

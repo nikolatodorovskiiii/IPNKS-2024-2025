@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    function calculateCircle() {
+        let radius = parseFloat(prompt('Enter the radius'));
+
+        let perimeter = 2 * radius * 3.14;
+        let area = Math.pow(radius, 2) * 3.14;
+
+        alert("The perimeter is: " + perimeter);
+        alert("The area is: " + area);
+
+        if (perimeter > area) {
+            alert("The perimeter is " + (perimeter / area).toFixed(2) + " times larger than the area.");
+        } else if (area > perimeter) {
+            alert("The area is " + (area / perimeter).toFixed(2) + " times larger than the perimeter.");
+        } else {
+            alert("The perimeter and area are equal.");
+        }
+    }
+
+    function calculateSquare() {
+        let side = parseFloat(prompt('Enter the side'));
+
+        let perimeter = 4 * side;
+        let area = Math.pow(side, 2);
+
+        alert("The perimeter is: " + perimeter);
+        alert("The area is: " + area);
+
+        if (perimeter > area) {
+            alert("The perimeter is " + (perimeter / area).toFixed(2) + " times larger than the area.");
+        } else if (area > perimeter) {
+            alert("The area is " + (area / perimeter).toFixed(2) + " times larger than the perimeter.");
+        } else {
+            alert("The perimeter and area are equal.");
+        }
+    }
+
+    let userInput = prompt("Enter form:");
+    (userInput.toLowerCase() === "krug")
+        ? calculateCircle()
+        : (userInput.toLowerCase() === "kvadrat")
+            ? calculateSquare()
+            : alert("Invalid input");
+</script>
+</body>
+</html>

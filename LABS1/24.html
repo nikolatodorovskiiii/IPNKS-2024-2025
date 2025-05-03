@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Best Movies by Genre</title>
+</head>
+<body>
+<p id="answer"></p>
+
+<script>
+    const answer = document.getElementById('answer');
+    let userInput = prompt("Enter Movie:");
+
+    let movies = [];
+
+    while (userInput !== "/") {
+        let splitValue = userInput.split(",");
+        if (splitValue.length === 3) {
+            let title = splitValue[0].trim();
+            let genre = splitValue[1].trim().toLowerCase();
+            let rating = parseFloat(splitValue[2].trim());
+
+            if (!isNaN(rating)) {
+                movies.push({ title, genre, rating });
+            }
+        }
+        userInput = prompt("Enter Movie:");
+    }
+
+    let genreInput = prompt("Enter Genre").toLowerCase();
+    let filtered = movies.filter(movie =>
+        movie.genre === genreInput && movie.rating >= 4
+    );
+
+    filtered.sort((a, b) => b.rating - a.rating);
+
+    if (filtered.length > 0) {
+        answer.innerHTML = `The best ${genreInput} movies:<br>`;
+        filtered.forEach(movie => {
+            answer.innerHTML += `${movie.title} - ${movie.rating}<br>`;
+        });
+    } else {
+        answer.innerHTML = `No top-rated movies found for genre "${genreInput}".`;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    function evenOrOdd() {
+        let wantInput = confirm("Do you want to enter a number?");
+
+        if (wantInput) {
+            let userInput = prompt("Enter a number");
+
+            if (userInput === null || isNaN(parseInt(userInput))) {
+                alert("You did not enter a valid number.");
+                return;
+            }
+
+            let number = parseInt(userInput);
+
+            if (number % 2 === 0) {
+                alert("It's an even number");
+            } else {
+                alert("It's an odd number");
+            }
+
+        } else {
+            alert("You don't want to enter a number");
+        }
+    }
+
+    evenOrOdd();
+</script>
+</body>
+</html>

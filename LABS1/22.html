@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Team Results</title>
+</head>
+<body>
+
+<script>
+    let teams = {}; // stores code: name
+    let goals = {}; // stores code: goals
+    let input;
+
+    // Step 1: Enter teams
+    while ((input = prompt("Enter team (format: Name:Code), or '@' to finish")) !== "@") {
+        let [name, code] = input.split(":");
+        code = parseInt(code);
+        teams[code] = name;
+        goals[code] = 0;
+    }
+
+    // Step 2: Enter match results
+    while ((input = prompt("Enter result (format: code1:code2;goals1:goals2), or '@' to finish")) !== "@") {
+        let [codes, result] = input.split(";");
+        let [code1, code2] = codes.split(":").map(Number);
+        let [goals1, goals2] = result.split(":").map(Number);
+
+        // Update goals
+        if (goals[code1] !== undefined) goals[code1] += goals1;
+        if (goals[code2] !== undefined) goals[code2] += goals2;
+    }
+
+    console.log("Teams and total goals:");
+    Object.keys(teams).forEach(code => {
+        let teamName = teams[code];
+        let teamGoals = goals[code] || 0;
+        console.log(`${code} ${teamName} [${teamGoals}]`);
+    });
+
+    let totalGoals = Object.values(goals).reduce((sum, g) => sum + g, 0);
+    console.log("Total goals:", totalGoals);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 5px;
+        }
+
+        td {
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <label for="name">Име</label>
+    <input type="text" id="name">
+</div>
+
+<div>
+    <label for="quantity">Продадена количина</label>
+    <input type="number" id="quantity">
+</div>
+
+<button>Ажурирај</button>
+
+<table>
+    <tr>
+        <td>Име</td>
+        <td>Шифра</td>
+        <td>Цена</td>
+        <td>Количина</td>
+        <td>Вкупна продажба</td>
+    </tr>
+    <tr>
+        <td>Јаболки</td>
+        <td>122</td>
+        <td>20</td>
+        <td>17</td>
+        <td>340</td>
+    </tr>
+    <tr>
+        <td>Круши</td>
+        <td>123</td>
+        <td>15</td>
+        <td>15</td>
+        <td>225</td>
+    </tr>
+    <tr>
+        <td>Цреши</td>
+        <td>124</td>
+        <td>100</td>
+        <td>2</td>
+        <td>200</td>
+    </tr>
+    <tr>
+        <td>Праски</td>
+        <td>125</td>
+        <td>55</td>
+        <td>6</td>
+        <td>330</td>
+    </tr>
+</table>
+
+</body>
+
+<script>
+    const updateButton = document.querySelector('button');
+    const cells = document.querySelectorAll('td');
+    const name = document.getElementById('name');
+    const quantity = document.getElementById('quantity');
+
+    updateButton.addEventListener("click", function () {
+        for(let i=5;i<cells.length;i+=5) {
+            console.log(cells[i].textContent);
+            if(cells[i].textContent === name.value) {
+                cells[i+3].textContent = parseInt(cells[i+3].textContent) + parseInt(quantity.value);
+                cells[i+4].textContent = parseInt(cells[i+3].textContent) * parseInt(cells[i+2].textContent);
+            }
+        }
+    })
+
+</script>
+
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="answer"></div>
+
+<script>
+    let userInput = prompt("Enter Number");
+    const answer = document.getElementById("answer");
+
+    function isPrime(value) {
+        value = parseInt(value);
+
+        if (value <= 1) return false;
+
+        for (let i = 2; i < value; i++) {
+            if (value % i === 0) return false;
+        }
+
+        return true;
+    }
+
+    while (!isNaN(parseInt(userInput))) {
+        let num = parseInt(userInput);
+        answer.innerHTML += isPrime(num)
+            ? `<p>${num} is prime</p>`
+            : `<p>${num} is not prime</p>`;
+        userInput = prompt("Enter Number");
+    }
+
+</script>
+
+</body>
+</html>

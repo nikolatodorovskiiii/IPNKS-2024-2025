@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>String Shifter</title>
+</head>
+<body>
+
+<script>
+    let str = prompt("Enter a string:");
+    let num = parseInt(prompt("Enter a number:"));
+    
+    let shift = Math.abs(num) % str.length;
+
+    if (num > 0) {
+        str = str.slice(-shift) + str.slice(0, -shift);
+    } else if (num < 0) {
+        str = str.slice(shift) + str.slice(0, shift);
+    }
+
+    console.log(str);
+    alert("Shifted string: " + str);
+</script>
+
+</body>
+</html>

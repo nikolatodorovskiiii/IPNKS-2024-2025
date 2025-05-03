@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+
+<script>
+    function sumDigits(value) {
+        value = value.split('');
+        let sum = 0;
+        for(let i = 0; i < value.length; i++) {
+            sum += parseInt(value[i]);
+        }
+        return sum;
+    }
+
+    function isPalindrome(value) {
+        let reversed = value.split('').reverse().join('');
+        return value === reversed;
+    }
+
+    let userInput = prompt("Enter value");
+
+    (isPalindrome(userInput) && parseInt(userInput) % sumDigits(userInput) === 0) ? (alert("It's a palindrome and divisible by the sum of it's digits.")) : (alert("It's a not palindrome and not divisible by the sum of it's digits."))
+</script>
+
+</html>

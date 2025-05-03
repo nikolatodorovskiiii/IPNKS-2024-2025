@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+
+<script>
+    let userInput = prompt("Enter value").split(" ");
+    let firstWord = userInput[0], secondWord = userInput[1];
+
+    function checkUnique(fromWord, compareWord) {
+        for (let i = 0; i < fromWord.length; i++) {
+            if (!compareWord.includes(fromWord[i])) {
+                console.log(fromWord[i] + " in " + fromWord);
+            }
+        }
+    }
+
+    checkUnique(firstWord, secondWord);
+    checkUnique(secondWord, firstWord);
+
+</script>
+
+</html>

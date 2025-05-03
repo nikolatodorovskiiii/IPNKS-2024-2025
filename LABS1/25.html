@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<p id="result"></p>
+
+<script>
+    let value = "124,Jane,Doe,28,42,55,37,49;125,Emily,Johnson,40,32;126,Michael,Brown,29,33,48,51,44,45,50,47;127,Sarah,Williams,34,54,23,38;128,David,Jones,45";
+
+    let idArr = [], firstNameArr = [], lastNameArr = [], avgTrackTime = [];
+
+    value = value.split(";");
+
+    for(let i = 0; i < value.length; i++) {
+        let splitValue = value[i].split(",");
+        let sum = 0;
+
+        idArr.push(splitValue[0]);
+        firstNameArr.push(splitValue[1]);
+        lastNameArr.push(splitValue[2]);
+
+        for(let j = 3; j < splitValue.length; j++) {
+            sum += parseInt(splitValue[j]);
+        }
+
+        let avg = sum / (splitValue.length - 3);
+        avgTrackTime.push(avg);
+    }
+    
+    let minIndex = 0;
+    for (let i = 1; i < avgTrackTime.length; i++) {
+        if (avgTrackTime[i] < avgTrackTime[minIndex]) {
+            minIndex = i;
+        }
+    }
+    
+    document.getElementById("result").innerText = firstNameArr[minIndex] + " " + lastNameArr[minIndex];
+</script>
+
+</body>
+</html>

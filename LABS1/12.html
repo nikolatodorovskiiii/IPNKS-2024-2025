@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+    let value = "Zdravo,32kako32s105?", answer = "";
+    for(let i=0;i<value.length;i++) {
+        if(isNaN(value[i])) {
+            answer += value[i];
+        } else {
+            let createNumber = 0;
+            while(!isNaN(value[i])) {
+                createNumber = createNumber * 10 + parseInt(value[i]);
+                i++;
+            }
+            answer+=String.fromCharCode(createNumber);
+            i--;
+        }
+    }
+    value = answer;
+    console.log(value);
+</script>
+
+</body>
+</html>

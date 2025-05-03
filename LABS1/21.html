@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Longest Word Finder</title>
+</head>
+<body>
+
+<script>
+    let max = "", maxLen = 0;
+
+    for (let i = 0; i < 3; i++) {
+        let userInput = prompt("Enter sentence:");
+        let words = userInput.split(" ");
+        for (let j = 0; j < words.length; j++) {
+            if (words[j].length > maxLen) {
+                max = words[j];
+                maxLen = max.length;
+            }
+        }
+    }
+
+    alert("Longest word: " + max);
+</script>
+
+</body>
+</html>

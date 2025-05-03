@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Carrier Checker</title>
+</head>
+<body>
+
+<script>
+    let userInput = prompt("Enter your phone number");
+    let carrierCode = userInput.slice(0, 3);
+    carrierCode = parseInt(carrierCode);
+    let carrier = "";
+
+    (carrierCode >= 70 && carrierCode <= 72) ? carrier = "Telekom" :
+        (carrierCode === 73) ? carrier = "MTEL" :
+            (carrierCode === 74) ? carrier = "Telekabel" :
+                (carrierCode >= 75 && carrierCode <= 78) ? carrier = "A1" :
+                    (carrierCode === 79) ? carrier = "LajkaMobile" :
+                        carrier = "Unknown";
+
+    console.log(userInput.slice(0, 3) + "/" + userInput.slice(3, 6) + "-" + userInput.slice(6, 9) + "-" + carrier);
+</script>
+
+</body>
+</html>

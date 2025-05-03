@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Median or Mean</title>
+</head>
+<body>
+
+<script>
+    let firstNumber = parseFloat(prompt("Enter First Number"));
+    let secondNumber = parseFloat(prompt("Enter Second Number"));
+    let thirdNumber = parseFloat(prompt("Enter Third Number"));
+
+    let option = prompt("Enter 'MEDIAN' or 'MEAN'").toLowerCase();
+
+    if (option === "mean") {
+        let mean = (firstNumber + secondNumber + thirdNumber) / 3;
+        alert("Mean: " + mean);
+    } else if (option === "median") {
+        let numbers = [firstNumber, secondNumber, thirdNumber];
+        numbers.sort((a, b) => a - b);
+        let median = numbers[1]; // middle value after sorting
+        alert("Median: " + median);
+    }
+</script>
+
+</body>
+</html>

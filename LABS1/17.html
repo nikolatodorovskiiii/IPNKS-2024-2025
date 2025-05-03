@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+    let value = "Hello, this IS an Example example! !?".split(" ");
+    let storeFiltered = [];
+    
+    for (let i = 0; i < value.length; i++) {
+        let cleaned = value[i].replace(/[^a-zA-Z]/g, "");
+        if (cleaned.length > 0) {
+            storeFiltered.push(cleaned);
+        }
+    }
+
+    let result = [];
+    for (let i = 0; i < storeFiltered.length; i++) {
+        let current = storeFiltered[i];
+
+        if (i < storeFiltered.length - 1) {
+            let next = storeFiltered[i + 1];
+            let overlap = "";
+            
+            for (let len = 1; len <= Math.min(current.length, next.length); len++) {
+                if (current.toLowerCase().endsWith(next.toLowerCase().substring(0, len))) {
+                    overlap = next.substring(0, len); 
+                }
+            }
+
+            if (overlap.length > 0) {
+                current = current + next.substring(overlap.length);
+                i++;
+            }
+        }
+
+        result.push(current);
+    }
+
+    console.log(result.join(" "));
+</script>
+
+</body>
+</html>

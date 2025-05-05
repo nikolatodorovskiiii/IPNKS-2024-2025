@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<style>
+
+    #box {
+        width: 800px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    table {
+        width: 750px;
+        border-collapse: collapse;
+        margin-top: 25px;
+    }
+
+    td {
+        border: 1px solid black;
+        text-align: center;
+    }
+
+</style>
+
+<div id="box">
+    <h1>Bank Transaction</h1>
+
+    <div>
+        <label for="sender">Sender:</label>
+        <input type="text" id="sender">
+
+        <label for="receiver">Receiver:</label>
+        <input type="text" id="receiver">
+
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount">
+
+        <button id="submitButton">Submit</button>
+    </div>
+
+    <table id="table"></table>
+
+</div>
+
+<script type="text/javascript">
+
+    const table = document.getElementById("table");
+    const button = document.getElementById("submitButton");
+    const sender = document.getElementById("sender");
+    const receiver = document.getElementById("receiver");
+    const amount = document.getElementById("amount");
+
+    let nameArr = ["Marta", "Marko", "Igor", "Iva", "Ana"];
+    let balance = [100, 150, 200, 250, 300];
+
+    let createCellValues = function () {
+        table.innerHTML += `<tr>
+            <td>Name</td>
+            <td>Balance</td>
+        </tr>`
+    }
+
+    let dataRows = function () {
+        for(let i=0;i<5;i++) {
+            table.innerHTML += `<tr>
+                <td>${nameArr[i]}</td>
+                <td>${balance[i]}</td>
+            </tr>`
+        }
+    }
+
+    let sendMoney = function () {
+        for(let i=0;i<5;i++) {
+            if(nameArr[i]==sender.value) { balance[i]-=parseInt(amount.value); }
+            if(nameArr[i]==receiver.value) { balance[i]+=parseInt(amount.value); }
+        }
+        table.innerHTML ="";
+        createCellValues();
+        dataRows();
+        sender.value = "";
+        receiver.value = "";
+        amount.value = "";
+    }
+
+    createCellValues();
+    dataRows();
+
+    button.addEventListener("click", sendMoney)
+
+</script>
+
+</body>
+</html>

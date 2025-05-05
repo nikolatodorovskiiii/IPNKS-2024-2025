@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+
+        td {
+            width: 300px;
+            text-align: center;
+        }
+
+        #buttons {
+            margin-top: 5px;
+        }
+
+        button {
+            width: 70px;
+            height: 30px;
+        }
+
+        #buttons > button:nth-child(1) {
+            background-color: green;
+        }
+
+        #buttons > button:nth-child(2) {
+            background-color: red;
+        }
+
+        #buttons > button:nth-child(3) {
+            background-color: #fbdcb1;
+        }
+
+    </style>
+
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Number</td>
+            <td>Name</td>
+            <td>Last Name</td>
+            <td>Points</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Name</td>
+            <td>Last Name</td>
+            <td>85</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Name</td>
+            <td>Last Name</td>
+            <td>92</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Name</td>
+            <td>Last Name</td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Name</td>
+            <td>Last Name</td>
+            <td>32</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Name</td>
+            <td>Last Name</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Name</td>
+            <td>Last Name</td>
+            <td>80</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Name</td>
+            <td>Last Name</td>
+            <td>90</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>Name</td>
+            <td>Last Name</td>
+            <td>76</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>Name</td>
+            <td>Last Name</td>
+            <td>43</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>Name</td>
+            <td>Last Name</td>
+            <td>83</td>
+        </tr>
+    </table>
+
+    <div id="buttons">
+        <button>PASSED</button>
+        <button>FAILED</button>
+        <button>CLEAR</button>
+    </div>
+
+</body>
+
+<script>
+    const btn = document.querySelectorAll('button');
+    const cells = document.querySelectorAll('td');
+
+    btn[0].addEventListener("click", function () {
+        for(let i=7;i<cells.length;i+=4) {
+            if(parseInt(cells[i].textContent)>=50) {
+                cells[i].parentElement.style.backgroundColor = "green";
+            }
+        }
+    })
+
+    btn[1].addEventListener("click", function () {
+        for(let i=7;i<cells.length;i+=4) {
+            if(parseInt(cells[i].textContent)<50) {
+                cells[i].parentElement.style.backgroundColor = "red";
+            }
+        }
+    })
+
+    btn[2].addEventListener("click", function () {
+        for(let i=7;i<cells.length;i+=4) {
+            cells[i].parentElement.style.backgroundColor = "white";
+        }
+    })
+
+</script>
+
+</html>

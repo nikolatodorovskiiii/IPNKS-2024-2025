@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        .firstRow {
+            font-weight: bolder;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<form onsubmit="addRow(event)">
+    <div>
+        <label for="product">Име на продуктот</label>
+        <input type="text" id="product" required>
+    </div>
+
+    <div>
+        <label for="code">Шифра</label>
+        <input type="text" id="code" required>
+    </div>
+
+    <div>
+        <label for="price">Цена</label>
+        <input type="number" id="price" required>
+    </div>
+
+    <div>
+        <label for="">Продадена количина</label>
+        <input type="number" id="quantity" required>
+    </div>
+
+    <button type="submit">Додади</button>
+</form>
+
+<table id="table">
+    <tr class="firstRow">
+        <td>Име</td>
+        <td>Шифра</td>
+        <td>Цена</td>
+        <td>Количина</td>
+        <td>Вкупна продажба</td>
+    </tr>
+</table>
+
+</body>
+
+<script>
+    const table = document.getElementById('table');
+
+    const prodcut = document.getElementById('product');
+    const code = document.getElementById('code');
+    const price = document.getElementById('price');
+    const quantity = document.getElementById('quantity');
+
+    function addRow() {
+        event.preventDefault();
+
+        const cells = document.querySelectorAll('td');
+
+        let found = false;
+
+        for(let i=0;i<cells.length;i+=5) {
+            if(cells[i].textContent===prodcut.value && cells[i+1].textContent===code.value) {
+                cells[i+2].textContent = price.value;
+                cells[i+3].textContent = parseInt(cells[i+3].textContent) + parseInt(quantity.value);
+                cells[i+4].textContent = parseInt(price.value) * parseInt(cells[i+3].textContent);
+                found=true;
+                break;
+            }
+        }
+
+        if(!found) {
+            table.innerHTML += `
+            <tr>
+                <td>${prodcut.value}</td>
+                <td>${code.value}</td>
+                <td>${price.value}</td>
+                <td>${quantity.value}</td>
+                <td>${parseInt(price.value) * parseInt(quantity.value)}</td>
+            </tr>
+        `
+        }
+    }
+
+</script>
+
+</html>
